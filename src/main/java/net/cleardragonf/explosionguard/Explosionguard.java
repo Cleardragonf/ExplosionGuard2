@@ -2,6 +2,7 @@ package net.cleardragonf.explosionguard;
 
 import com.google.inject.Inject;
 import java.io.File;
+import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -35,7 +36,8 @@ public class Explosionguard {
 
     @Inject
     @DefaultConfig(sharedRoot = false)
-    private File configFile;
+    private Path configFile;
+
 
     @Inject
     @DefaultConfig(sharedRoot = false)

@@ -6,6 +6,8 @@ import org.spongepowered.configurate.loader.ConfigurationLoader;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class ConfigurationManager {
     private static ConfigurationManager instance = new ConfigurationManager();
@@ -18,11 +20,11 @@ public class ConfigurationManager {
         return instance;
     }
 
-    public void setup(File configFile, ConfigurationLoader<CommentedConfigurationNode> configLoader) {
+    public void setup(Path configFile, ConfigurationLoader<CommentedConfigurationNode> configLoader) {
         this.configLoader = configLoader;
-        if (!configFile.exists()) {
+        if (Files.exists(configFile)) {
             try {
-                configFile.createNewFile();
+                Files.createFile(configFile);
                 loadConfig();
                 this.config.node(new Object[] { "Explosions" }).comment("Disable or Enable These Explosion Types? True = No Explosions || False = Explosions");
                 this.config.node(new Object[] { "Explosions", "TNT" }).getString("true");
