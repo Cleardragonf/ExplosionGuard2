@@ -1,0 +1,44 @@
+{
+  "loader": {
+    "id": "java_plain",
+    "version": "1.0"
+  },
+  "license": "MIT",
+  "mappings": "1:2:3",
+  "plugins": [
+    {
+      "id": "explosionguard",
+      "entrypoint": "net.cleardragonf.explosionguard.Explosionguard",
+      "name": "Explosionguard",
+      "description": "Just testing things...",
+
+      "version": "1.0.0",
+      "branding": {
+        "logo": "images/example_logo.png",
+        "icon": "images/example_icon.png"
+      },
+      "links": {
+        "homepage": "https://example_homepage.com",
+        "source": "https://example_source.com",
+        "issues": "https://example_issues.com"
+      },
+      "contributors": [
+        {
+          "name": "Testy Tester",
+          "description": "Lead Developer"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "test",
+          "version": "0.1.0",
+          "load-order": "before",
+          "optional": true
+        }
+      ],
+      "properties": {
+        "banana": "man"
+      }
+    }
+  ]
+}
