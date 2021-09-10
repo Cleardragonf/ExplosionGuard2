@@ -1,12 +1,12 @@
 import org.spongepowered.gradle.plugin.config.PluginLoaders
-import org.spongepowered.plugin.metadata.PluginDependency
+import org.spongepowered.plugin.metadata.model.PluginDependency
 
 plugins {
     `java-library`
-    id("org.spongepowered.gradle.plugin") version "1.1.1"
+    id("org.spongepowered.gradle.plugin") version "2.0.0"
 }
 
-group = "net.cleardragonf"
+group = "org.spongepowered"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -14,19 +14,23 @@ repositories {
 }
 
 sponge {
-    apiVersion("8.0.0")
+    apiVersion("8.0.0-SNAPSHOT")
+    license("CHANGEME")
+    loader {
+        name(PluginLoaders.JAVA_PLAIN)
+        version("1.0")
+    }
     plugin("explosionguard") {
-        loader(PluginLoaders.JAVA_PLAIN)
-        displayName("Explosionguard")
-        mainClass("net.cleardragonf.explosionguard.Explosionguard")
-        description("My plugin description")
+        displayName("ExplosionGuard")
+        entrypoint("net.cleardragonf.explosionguard.ExplosionGuard")
+        description("Just testing things...")
         links {
-            // homepage("https://spongepowered.org")
-            // source("https://spongepowered.org/source")
-            // issues("https://spongepowered.org/issues")
+            homepage("https://spongepowered.org")
+            source("https://spongepowered.org/source")
+            issues("https://spongepowered.org/issues")
         }
-        contributor("Cleardragonf") {
-            description("Author")
+        contributor("Spongie") {
+            description("Lead Developer")
         }
         dependency("spongeapi") {
             loadOrder(PluginDependency.LoadOrder.AFTER)
@@ -39,15 +43,14 @@ val javaTarget = 8 // Sponge targets a minimum of Java 8
 java {
     sourceCompatibility = JavaVersion.toVersion(javaTarget)
     targetCompatibility = JavaVersion.toVersion(javaTarget)
-    if (JavaVersion.current() < JavaVersion.toVersion(javaTarget)) {
-        toolchain.languageVersion.set(JavaLanguageVersion.of(javaTarget))
-    }
 }
 
 tasks.withType(JavaCompile::class).configureEach {
     options.apply {
         encoding = "utf-8" // Consistent source file encoding
-        release.set(javaTarget)
+        if (JavaVersion.current().isJava10Compatible) {
+            release.set(javaTarget)
+        }
     }
 }
 
