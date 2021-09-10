@@ -28,7 +28,7 @@ import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.loader.ConfigurationLoader;
 import org.spongepowered.plugin.builtin.jvm.Plugin;
 
-@Plugin("Explosion Guard")
+@Plugin("explosionguard")
 public class Explosionguard {
     @Inject
     private Logger logger;
