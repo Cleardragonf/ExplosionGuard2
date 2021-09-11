@@ -22,7 +22,7 @@ public class ConfigurationManager {
 
     public void setup(Path configFile, ConfigurationLoader<CommentedConfigurationNode> configLoader) {
         this.configLoader = configLoader;
-        if (Files.exists(configFile)) {
+        if (!Files.exists(configFile)) {
             try {
                 Files.createFile(configFile);
                 loadConfig();
