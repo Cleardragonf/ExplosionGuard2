@@ -67,21 +67,21 @@ public class Explosionguard {
     @Listener
     public void onExplosionEvent(ExplosionEvent.Pre event) {
         if (event.cause().first(Creeper.class).isPresent()) {
-            if (ConfigurationManager.getInstance().getConfig().node(new Object[] { "Explosions", "Creeper" }).getString().equalsIgnoreCase("true"))
+            if (ConfigurationManager.getInstance().getConfig().node("Explosions", "Creeper" ).getBoolean())
                 event.setCancelled(true);
-            if (ConfigurationManager.getInstance().getConfig().node(new Object[] { "Explosions", "Creeper" }).getString().equalsIgnoreCase("false"))
+            if (ConfigurationManager.getInstance().getConfig().node("Explosions", "Creeper" ).getBoolean())
                 event.setCancelled(false);
         }
         if (event.cause().first(PrimedTNT.class).isPresent()) {
-            if (ConfigurationManager.getInstance().getConfig().node(new Object[] { "Explosions", "TNT" }).getString().equalsIgnoreCase("true"))
+            if (ConfigurationManager.getInstance().getConfig().node( "Explosions", "TNT" ).getBoolean())
                 event.setCancelled(true);
-            if (ConfigurationManager.getInstance().getConfig().node(new Object[] { "Explosions", "TNT" }).getString().equalsIgnoreCase("false"))
+            if (ConfigurationManager.getInstance().getConfig().node("Explosions", "TNT" ).getBoolean())
                event.setCancelled(false);
         }
         if (event.cause().first(Ghast.class).isPresent()) {
-            if (net.cleardragonf.explosionguard.ConfigurationManager.getInstance().getConfig().node(new Object[] { "Explosions", "Ghast" }).getString().equalsIgnoreCase("true"))
+            if (ConfigurationManager.getInstance().getConfig().node("Explosions", "Ghast").getBoolean())
                 event.setCancelled(true);
-            if (net.cleardragonf.explosionguard.ConfigurationManager.getInstance().getConfig().node(new Object[] { "Explosions", "Ghast" }).getString().equalsIgnoreCase("false"))
+            if (ConfigurationManager.getInstance().getConfig().node("Explosions", "Ghast").getBoolean())
                 event.setCancelled(false);
         }
     }
@@ -137,13 +137,13 @@ public class Explosionguard {
     @Listener
     public void itemDrop(DropItemEvent.Destruct itemDrop) {
         if (itemDrop.cause().first(Creeper.class).isPresent() &&
-               ConfigurationManager.getInstance().getConfig().node(new Object[] { "DropItems_Creeper" }).getString().equalsIgnoreCase("false"))
+               ConfigurationManager.getInstance().getConfig().node("DropItems_Creeper").getBoolean())
             itemDrop.setCancelled(true);
         if (itemDrop.cause().first(PrimedTNT.class).isPresent() &&
-                ConfigurationManager.getInstance().getConfig().node(new Object[] { "DropItems_TNT" }).getString().equalsIgnoreCase("false"))
+                ConfigurationManager.getInstance().getConfig().node("DropItems_TNT").getBoolean())
             itemDrop.setCancelled(true);
         if (itemDrop.cause().first(Ghast.class).isPresent() &&
-                ConfigurationManager.getInstance().getConfig().node(new Object[] { "DropItems_Ghast" }).getString().equalsIgnoreCase("false"))
+                ConfigurationManager.getInstance().getConfig().node("DropItems_Ghast").getBoolean())
             itemDrop.setCancelled(true);
     }
 }
