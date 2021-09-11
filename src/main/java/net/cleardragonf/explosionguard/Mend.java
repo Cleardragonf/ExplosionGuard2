@@ -24,7 +24,8 @@ public class Mend {
         this.blockSnapshot.forEach(bs -> {
             ed.getLogger().warning(bs.toString());
             if(Sponge.server().worldManager().world(BlockSnapshot.empty().world()).isPresent()){
-                bs.restore(true, BlockChangeFlags.NOTIFY_CLIENTS);
+                bs.restore(true, BlockChangeFlags.ALL);
+
             }
         });
     }
